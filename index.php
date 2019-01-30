@@ -20,7 +20,7 @@ fclose($myfile);
     </br></br></br>
     <center>
     <form id="myForm" name="myForm" action="onoff.php" method="post"> 
-      <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" <?php if $read = "On"{ echo "checked"} ?>>
+      <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" <?php if ($read = "On") { echo "checked" } ?>>
     </form>
       <?php echo $status; ?>
       <?php echo $read; ?>
