@@ -14,13 +14,19 @@
  <body>
   <br /><br />
   <div class="container" style="width:600px;">
+   <h2 align="center">Make Stylish Toggles Checkboxes & Use in Form with PHP Ajax</h2><br /><br />
    <form method="post" id="insert_data">
     <div class="form-group">
+     <label>Enter Name</label>
+     <input type="text" name="name" id="name" class="form-control" />
+    </div>
+    <div class="form-group">
+     <label>Define Gender</label>
      <div class="checkbox">
       <input type="checkbox" name="gender" id="gender" checked />
      </div>
     </div>
-    <input type="hidden" name="hidden_gender" id="hidden_gender" value="On" />
+    <input type="hidden" name="hidden_gender" id="hidden_gender" value="Male" />
     <br />
     <input type="submit" name="insert" id="action" class="btn btn-info" value="Insert" />
    </form>
@@ -32,8 +38,8 @@
 $(document).ready(function(){
  
  $('#gender').bootstrapToggle({
-  on: 'On',
-  off: 'Off',
+  on: 'Male',
+  off: 'Female',
   onstyle: 'success',
   offstyle: 'danger'
  });
@@ -41,11 +47,11 @@ $(document).ready(function(){
  $('#gender').change(function(){
   if($(this).prop('checked'))
   {
-   $('#hidden_gender').val('On');
+   $('#hidden_gender').val('Male');
   }
   else
   {
-   $('#hidden_gender').val('Off');
+   $('#hidden_gender').val('Female');
   }
  });
 
@@ -53,9 +59,14 @@ $(document).ready(function(){
   event.preventDefault();
   if($('#name').val() == '')
   {
+   alert("Please Enter Name");
+   return false;
+  }
+  else
+  {
    var form_data = $(this).serialize();
    $.ajax({
-    url:"onoff.php",
+    url:"insert.php",
     method:"POST",
     data:form_data,
     success:function(data){
