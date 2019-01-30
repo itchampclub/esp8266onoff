@@ -26,8 +26,6 @@ if ($read == "On")
     <form id="myForm" name="myForm" action="onoff.php" method="post"> 
       <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" <?php echo $status; ?> >
     </form>
-      <?php echo $status; ?>
-      <?php echo $read; ?>
     <br><br>
     <div class="panel panel-default">
     <div class="panel-body" id="body"></div>
