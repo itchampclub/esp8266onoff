@@ -53,11 +53,6 @@ $(document).ready(function(){
   event.preventDefault();
   if($('#name').val() == '')
   {
-   alert("Please Enter Name");
-   return false;
-  }
-  else
-  {
    var form_data = $(this).serialize();
    $.ajax({
     url:"onoff.php",
