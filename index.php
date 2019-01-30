@@ -14,14 +14,13 @@
  <body>
   <br /><br />
   <div class="container" style="width:600px;">
-   <h2 align="center">Make Stylish Toggles Checkboxes & Use in Form with PHP Ajax</h2><br /><br />
    <form method="post" id="insert_data">
     <div class="form-group">
      <div class="checkbox">
       <input type="checkbox" name="gender" id="gender" checked />
      </div>
     </div>
-    <input type="hidden" name="hidden_gender" id="hidden_gender" value="Male" />
+    <input type="hidden" name="hidden_gender" id="hidden_gender" value="On" />
     <br />
     <input type="submit" name="insert" id="action" class="btn btn-info" value="Insert" />
    </form>
@@ -33,8 +32,8 @@
 $(document).ready(function(){
  
  $('#gender').bootstrapToggle({
-  on: 'Male',
-  off: 'Female',
+  on: 'On',
+  off: 'Off',
   onstyle: 'success',
   offstyle: 'danger'
  });
@@ -42,11 +41,11 @@ $(document).ready(function(){
  $('#gender').change(function(){
   if($(this).prop('checked'))
   {
-   $('#hidden_gender').val('Male');
+   $('#hidden_gender').val('On');
   }
   else
   {
-   $('#hidden_gender').val('Female');
+   $('#hidden_gender').val('Off');
   }
  });
 
@@ -61,7 +60,7 @@ $(document).ready(function(){
   {
    var form_data = $(this).serialize();
    $.ajax({
-    url:"insert.php",
+    url:"onoff.php",
     method:"POST",
     data:form_data,
     success:function(data){
