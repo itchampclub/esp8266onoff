@@ -10,7 +10,7 @@
 
   </head>
   <body>
-    <form id="myForm" name="myForm" action="audio_alarm.php" method="post"> 
+    <form id="myForm" name="myForm" action="onoff.php" method="post"> 
       <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Disabled" data-on="Enabled" checked>
     </form>
     <br><br>
