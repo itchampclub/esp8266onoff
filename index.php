@@ -14,13 +14,14 @@
       <?php
 $myfile = fopen("data.txt", "r") or die("Unable to open file!");
 $read = fread($myfile,filesize("data.txt"));
-fclose($myfile);
-
-if ($read = "On") {
+    if ($read = "On") {
     $status = "checked";
 } else {
     $status = "";
 }
+fclose($myfile);
+
+
 ?>
     </br></br></br>
     <center>
