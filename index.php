@@ -10,6 +10,8 @@
 
   </head>
   <body>
+    </br></br></br>
+    <center>
     <form id="myForm" name="myForm" action="onoff.php" method="post"> 
       <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" checked>
     </form>
@@ -19,6 +21,7 @@
     <div class="panel-body" id="body"></div>
   </div>
     <div></div>
+       </center>
     <script>
       $('#toggle').change(function(){
         var mode= $(this).prop('checked');
@@ -38,5 +41,6 @@
         });
       });
     </script>
+     
   </body>
   </html>
