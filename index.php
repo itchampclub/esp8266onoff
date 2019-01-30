@@ -14,16 +14,21 @@
  <body>
   <br /><br />
   <div class="container" style="width:600px;">
-   <h2 align="center">On-Off</h2><br /><br />
+   <h2 align="center">Make Stylish Toggles Checkboxes & Use in Form with PHP Ajax</h2><br /><br />
    <form method="post" id="insert_data">
     <div class="form-group">
+     <label>Enter Name</label>
+     <input type="text" name="name" id="name" class="form-control" />
+    </div>
+    <div class="form-group">
+     <label>Define Gender</label>
      <div class="checkbox">
-      <input type="checkbox" name="onoff" id="onoff" checked />
+      <input type="checkbox" name="gender" id="gender" checked />
      </div>
     </div>
-    <input type="hidden" name="onoff" id="onoff" value="on" />
+    <input type="hidden" name="hidden_gender" id="hidden_gender" value="Male" />
     <br />
-    <input type="submit" name="insert" id="action" class="btn btn-info" value="Submit" />
+    <input type="submit" name="insert" id="action" class="btn btn-info" value="Insert" />
    </form>
   </div>
  </body>
@@ -32,29 +37,36 @@
 <script>
 $(document).ready(function(){
  
- $('#onoff').bootstrapToggle({
-  on: 'On',
-  off: 'Off',
+ $('#gender').bootstrapToggle({
+  on: 'Male',
+  off: 'Female',
   onstyle: 'success',
   offstyle: 'danger'
  });
 
- $('#onoff').change(function(){
+ $('#gender').change(function(){
   if($(this).prop('checked'))
   {
-   $('#onoff').val('On');
+   $('#hidden_gender').val('Male');
   }
   else
   {
-   $('#onoff').val('Off');
+   $('#hidden_gender').val('Female');
   }
  });
 
  $('#insert_data').on('submit', function(event){
   event.preventDefault();
+  if($('#name').val() == '')
+  {
+   alert("Please Enter Name");
+   return false;
+  }
+  else
+  {
    var form_data = $(this).serialize();
    $.ajax({
-    url:"onoff.php",
+    url:"insert.php",
     method:"POST",
     data:form_data,
     success:function(data){
@@ -62,8 +74,9 @@ $(document).ready(function(){
      {
       $('#insert_data')[0].reset();
       $('#gender').bootstrapToggle('on');
-      alert("Success");
+      alert("Data Inserted");
      }
+    }
    });
   }
  });
