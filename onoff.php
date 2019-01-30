@@ -18,7 +18,7 @@ if ($mode=='true')
 }
  
  
-    $message='Hey my button is enabled!!';
+    $message='Light is On!!';
     $success='Enabled';
     echo json_encode(array('message'=>$message,'$success'=>$success));
 }
@@ -36,7 +36,7 @@ else if ($mode=='false')
   fclose($myfile);
 }
  
-    $message='Hey my button is disabled!!';
+    $message='Light is Off!!';
     $success='Disabled';
     echo json_encode(array('message'=>$message,'success'=>$success));
 
