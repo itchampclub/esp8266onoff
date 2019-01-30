@@ -4,7 +4,7 @@ $mode=$_POST['mode'];
 $filename = 'data.txt';
 $txt1 = "On";
 $txt2 = "Off";
-if ($mode=='true') //mode is true when button is enabled 
+if ($mode=='true')
 {
 
  if (file_exists($filename)) {
@@ -23,7 +23,7 @@ if ($mode=='true') //mode is true when button is enabled
     echo json_encode(array('message'=>$message,'$success'=>$success));
 }
 
-else if ($mode=='false')  //mode is false when button is disabled
+else if ($mode=='false')
 {
 
  if (file_exists($filename)) {
