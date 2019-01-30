@@ -17,11 +17,6 @@
    <h2 align="center">Make Stylish Toggles Checkboxes & Use in Form with PHP Ajax</h2><br /><br />
    <form method="post" id="insert_data">
     <div class="form-group">
-     <label>Enter Name</label>
-     <input type="text" name="name" id="name" class="form-control" />
-    </div>
-    <div class="form-group">
-     <label>Define Gender</label>
      <div class="checkbox">
       <input type="checkbox" name="gender" id="gender" checked />
      </div>
