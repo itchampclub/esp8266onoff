@@ -11,7 +11,7 @@
   </head>
   <body>
     <form id="myForm" name="myForm" action="onoff.php" method="post"> 
-      <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Disabled" data-on="Enabled" checked>
+      <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" checked>
     </form>
     <br><br>
     <div class="panel panel-default">
@@ -22,10 +22,6 @@
     <script>
       $('#toggle').change(function(){
         var mode= $(this).prop('checked');
-        // // submit the form 
-        // $(#myForm).ajaxSubmit(); 
-        // // return false to prevent normal browser submit and page navigation 
-        // return false; 
         $.ajax({
           type:'POST',
           dataType:'JSON',
