@@ -66,7 +66,7 @@ $(document).ready(function(){
   {
    var form_data = $(this).serialize();
    $.ajax({
-    url:"insert.php",
+    url:"onoff.php",
     method:"POST",
     data:form_data,
     success:function(data){
