@@ -29,7 +29,7 @@
         $.ajax({
           type:'POST',
           dataType:'JSON',
-          url:'audio_alarm.php',
+          url:'onoff.php',
           data:'mode='+mode,
           success:function(data)
           {
