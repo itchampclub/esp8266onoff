@@ -16,6 +16,9 @@
       <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" checked>
     </form>
     <br><br>
+          <div class="panel panel-default">
+    <div class="panel-heading" id="heading"></div>
+    <div class="panel-body" id="body"></div>
   </div>
     <div></div>
        </center>
