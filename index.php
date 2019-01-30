@@ -14,10 +14,10 @@
       <?php
 $myfile = fopen("data.txt", "r") or die("Unable to open file!");
 $read = fread($myfile,filesize("data.txt"));
-        if($read = "On"){
-    $status = "checked";
-    }else{
+        if($read = "Off"){
     $status = "";
+    }else{
+    $status = "checked";
     }  
 fclose($myfile);
 
@@ -28,7 +28,7 @@ fclose($myfile);
       <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" <?php echo $status; ?>>
     </form>
       <?php echo $status; ?>
-      <?php echo $read; ?>
+                <?php echo $read; ?>
     <br><br>
     <div class="panel panel-default">
     <div class="panel-body" id="body"></div>
