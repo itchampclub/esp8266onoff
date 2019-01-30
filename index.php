@@ -1,13 +1,3 @@
-<?php
-$myfile = fopen("data.txt", "r") or die("Unable to open file!");
-$read = fread($myfile,filesize("data.txt"));
-fclose($myfile);
-
-if ($read = "On") {
-    $status = "checked";
-} else {
-    $status = "";
-}
 
 <html>
   <head>
@@ -21,6 +11,17 @@ if ($read = "On") {
 
   </head>
   <body>
+      <?php
+$myfile = fopen("data.txt", "r") or die("Unable to open file!");
+$read = fread($myfile,filesize("data.txt"));
+fclose($myfile);
+
+if ($read = "On") {
+    $status = "checked";
+} else {
+    $status = "";
+}
+?>
     </br></br></br>
     <center>
     <form id="myForm" name="myForm" action="onoff.php" method="post"> 
@@ -54,4 +55,3 @@ if ($read = "On") {
      
   </body>
   </html>
-?>
