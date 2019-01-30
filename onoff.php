@@ -1,11 +1,23 @@
  <?php
 
 $mode=$_POST['mode'];
-
+$filename = 'data.txt';
+$txt1 = "On";
+$txt2 = "Off";
 if ($mode=='true') //mode is true when button is enabled 
 {
-    //Retrive the values from database you want and send using json_encode
-    //example
+
+ if (file_exists($filename)) {
+  $myfile = fopen('data.txt', "w+") or die("Unable to open file!");
+  fwrite($myfile, $txt1);
+  fclose($myfile);
+} else {
+  $myfile = fopen('data.txt', "x+") or die("Unable to open file!");
+  fwrite($myfile, $txt1);
+  fclose($myfile);
+}
+ 
+ 
     $message='Hey my button is enabled!!';
     $success='Enabled';
     echo json_encode(array('message'=>$message,'$success'=>$success));
@@ -13,8 +25,17 @@ if ($mode=='true') //mode is true when button is enabled
 
 else if ($mode=='false')  //mode is false when button is disabled
 {
-    //Retrive the values from database you want and send using json_encode
-    //example
+
+ if (file_exists($filename)) {
+  $myfile = fopen('data.txt', "w+") or die("Unable to open file!");
+  fwrite($myfile, $txt2);
+  fclose($myfile);
+} else {
+  $myfile = fopen('data.txt', "x+") or die("Unable to open file!");
+  fwrite($myfile, $txt2);
+  fclose($myfile);
+}
+ 
     $message='Hey my button is disabled!!';
     $success='Disabled';
     echo json_encode(array('message'=>$message,'success'=>$success));
