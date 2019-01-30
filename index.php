@@ -1,4 +1,15 @@
-  <html>
+<?php
+$myfile = fopen("data.txt", "r") or die("Unable to open file!");
+$read = fread($myfile,filesize("data.txt"));
+fclose($myfile);
+
+if ($read = "On") {
+    $status = "checked";
+} else {
+    $status = "";
+}
+
+<html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script type="text/javascript"     src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -13,7 +24,7 @@
     </br></br></br>
     <center>
     <form id="myForm" name="myForm" action="onoff.php" method="post"> 
-      <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" checked>
+      <input type="checkbox" name="toggle" id="toggle" data-toggle="toggle" data-off="Off" data-on="On" <?php $status; ?>>
     </form>
     <br><br>
     <div class="panel panel-default">
@@ -43,3 +54,4 @@
      
   </body>
   </html>
+?>
