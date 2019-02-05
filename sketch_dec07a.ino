@@ -1,30 +1,15 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-#define enableB 12
-#define pinB1  2 //IN3
-#define pinB2    0 //IN14
-#define pinA1  13 // IN1
-#define pinA2  15//IN2
-#define enableA  14 
-#define LED 16
+#define pinON 5 //D1-GPIO5
 
 const char* ssid = "ssid";
 const char* password = "password";
 
 
-
-
-
 void setup() {
   Serial.begin(115200);
-  pinMode(LED,OUTPUT);
-  pinMode(enableB , OUTPUT);
-  pinMode(pinB1, OUTPUT);
-  pinMode(pinB2, OUTPUT);
-  pinMode(enableA, OUTPUT);
-  pinMode(pinA1, OUTPUT);
-  pinMode(pinA2, OUTPUT);
+  pinMode(pinOn, OUTPUT);
   
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
@@ -42,26 +27,13 @@ void setup() {
     String content = http.getString();
     Serial.println(content);
 
-  int Valueturnleft = -1;
-  int Valueturnright = -1;
-  int Valueforback = -1;
-  int Valueforward = -1;
-  int Valuestop = -1;
+  int ValueOn = -1;
+  int ValueOff = -1;
   int ValueError = -1;
   
   ValueError = content.indexOf("error");
-  Valueturnleft = content.indexOf("turnleft");
-  Valueturnright = content.indexOf("turnright");
-  Valueforback = content.indexOf("forback");
-  Valueforward = content.indexOf("forward");
-  Valuestop = content.indexOf("stop");
-
-  
-
- 
-
-
-
+  ValueOn = content.indexOf("On");
+  ValueOff = content.indexOf("Off");
 
   if (ValueError > 0) {
   delay(9000);
@@ -70,77 +42,25 @@ void setup() {
   {
     Serial.print("");
     
-     if (Valueturnleft and Valueturnright and  Valueforback and  Valueforward and Valuestop == -1) 
+     if (ValueOn and ValueOff == -1) 
     {
       Serial.print("\nAwaiting Command\n");     
     }
-        if (Valueturnleft != -1) //EB
+         if (ValueOn != -1)
           {
-            digitalWrite(LED,HIGH);
-               analogWrite(enableA,100);
-            digitalWrite(pinA2, LOW);
-            digitalWrite(pinA1, LOW);
-            analogWrite(enableB,600); // หยุด
-            digitalWrite(pinB2, HIGH);
-            digitalWrite(pinB1, LOW);
-            
-         
-              Serial.println("\n turnleft\n");
+            digitalWrite(pinOn, HIGH); 
+            Serial.println("\n On\n");
               
            }
 
-         if (Valueturnright != -1) 
+         if (ValueOff != -1) 
           {
-             digitalWrite(LED,HIGH);   //EA                       
-               analogWrite(enableA,600);// หยุด
-            digitalWrite(pinA2, HIGH);
-            digitalWrite(pinA1, LOW);
-            analogWrite(enableB,100); 
-            digitalWrite(pinB2, LOW);
-            digitalWrite(pinB1, LOW);   
-            Serial.print("\n right\n");
+            digitalWrite(pinOn, LOW);   
+            Serial.print("\n Off\n");
             
           }
 
-          if (Valueforback != -1) 
-          {
-             digitalWrite(LED,HIGH);
-            analogWrite(enableA,600);
-            digitalWrite(pinA2, LOW);
-            digitalWrite(pinA1, HIGH);
-            analogWrite(enableB,600);
-             digitalWrite(pinB2, LOW);
-            digitalWrite(pinB1, HIGH);                                  
-             Serial.println("forback");
-            
-          }
 
-          if (Valueforward != -1) 
-          {
-             digitalWrite(LED,HIGH);            
-           analogWrite(enableA,600);
-             digitalWrite(pinA1, LOW);
-            digitalWrite(pinA2, HIGH);          
-            analogWrite(enableB,600);
-             digitalWrite(pinB1, LOW);
-            digitalWrite(pinB2, HIGH);        
-            Serial.println("forward");
-            
-          }
-
-          if (Valuestop != -1) 
-          {
-             
-            digitalWrite(LED,LOW);
-            
-            analogWrite(enableA,0);
-            digitalWrite(pinB2, HIGH);
-            digitalWrite(pinB1, HIGH);
-            analogWrite(enableB,0);
-            digitalWrite(pinA2, HIGH);
-            digitalWrite(pinA1, HIGH);
-            Serial.println("stop");
-          }
           } 
   }
   else {
